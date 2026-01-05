@@ -104,6 +104,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # debugging symbols
+  environment.enableDebugInfo = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -136,7 +139,23 @@
   deezer-enhanced
   zoom-us
   dosbox-x
-  ];
+
+  (prismlauncher.override {
+    # Add binary required by some mod
+    additionalPrograms = [ ffmpeg ];
+
+    # Change Java runtimes available to Prism Launcher
+    jdks = [
+      zulu8
+      zulu11
+      zulu17
+      zulu21
+      zulu25
+      zulu
+    ];
+  })
+];
+
 
 
 xdg.mime.defaultApplications = {
