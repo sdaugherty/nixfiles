@@ -41,6 +41,9 @@
   # firmware updates?
   services.fwupd.enable = true;
 
+  # Enable periodic SSD trim.
+  services.fstrim.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
