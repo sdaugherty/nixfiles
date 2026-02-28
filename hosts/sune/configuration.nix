@@ -11,7 +11,7 @@
   myConfig.modules = {
     apps.enable = true;
     dev.enable = true;
-    gaming.enable = true;
+    gaming.enable = false;
     kde.enable = true;
     nvidia.enable = false;
     amd.enable = true;
