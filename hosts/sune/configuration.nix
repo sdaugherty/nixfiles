@@ -14,5 +14,6 @@
     gaming.enable = true;
     kde.enable = true;
     nvidia.enable = false;
+    amd.enable = true;
   };
 }

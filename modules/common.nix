@@ -7,6 +7,7 @@
     ./gaming.nix
     ./kde.nix
     ./nvidia.nix
+    ./amd.nix
   ];
 
   # Bootloader.
