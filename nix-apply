@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# Exit on error, undefined variables, and pipe failures
+set -euo pipefail
+
+# Get the hostname
+HOST=$(hostname)
+FLAKE_URI=".#$HOST"
+
+echo "--- Detecting hostname: $HOST ---"
+
+# Check if the host exists in flake.nix
+if ! grep -q "$HOST" flake.nix; then
+    echo "Error: Host '$HOST' not found in flake.nix"
+    exit 1
+fi
+
+# Run the test
+echo "--- Testing configuration with 'nixos-rebuild test' ---"
+# We don't use 'set -e' here to allow custom error handling if needed, 
+# but 'set -e' is already set at the top.
+# If this fails, bash will exit immediately because of 'set -e'.
+sudo nixos-rebuild test --flake "$FLAKE_URI"
+
+# Run the switch
+echo "--- Test successful. Applying changes with 'nixos-rebuild switch' ---"
+sudo nixos-rebuild switch --flake "$FLAKE_URI"
+
+# Git operations
+echo "--- Rebuild successful. Committing changes to git ---"
+git add .
+
+# Gather info for commit message
+SYSTEM_PATH=$(readlink /nix/var/nix/profiles/system)
+# We use sudo for list-generations to ensure we can read all system generations if needed
+GENERATIONS=$(sudo nixos-rebuild list-generations)
+# Extract info from the first generation entry (second line after header)
+CURRENT_GEN_INFO=$(echo "$GENERATIONS" | head -n 2 | tail -n 1)
+GEN_NUM=$(echo "$CURRENT_GEN_INFO" | awk '{print $1}')
+GEN_DATE=$(echo "$CURRENT_GEN_INFO" | awk '{print $2 " " $3}')
+
+# Create a temporary file for the commit message
+MSG_FILE=$(mktemp)
+cat <<EOF > "$MSG_FILE"
+nixos-rebuild: $HOST updated (Gen $GEN_NUM, $GEN_DATE)
+
+System Profile: $SYSTEM_PATH
+Current Build:
+
+$CURRENT_GEN_INFO
+EOF
+
+# Commit the changes
+git commit -F "$MSG_FILE"
+rm "$MSG_FILE"
+
+echo "--- Done! Configuration for '$HOST' has been tested, applied, and committed. ---"
