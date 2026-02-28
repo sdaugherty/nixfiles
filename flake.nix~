@@ -16,7 +16,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/mystra/configuration.nix
-          #home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -29,7 +29,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/sune/configuration.nix
-          #home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
