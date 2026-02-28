@@ -6,17 +6,13 @@
 }:
 
 {
-  options.myConfig.modules.gaming.enable = lib.mkEnableOption "Gaming tools and emulators";
+  options.myConfig.modules.gaming.enable = lib.mkEnableOption "Gaming tools";
 
   config = lib.mkIf config.myConfig.modules.gaming.enable {
     environment.systemPackages = with pkgs; [
       heroic
       lutris
       protonup-qt
-      zsnes
-      blastem
-      retroarch-full
-      dosbox-x
       (prismlauncher.override {
         # Add binary required by some mod
         additionalPrograms = [ ffmpeg ];

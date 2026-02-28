@@ -12,6 +12,7 @@
     apps.enable = true;
     dev.enable = false;
     gaming.enable = true;
+    emulators.enable = true;
     kde.enable = true;
     nvidia.enable = false;
     amd.enable = true;

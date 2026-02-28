@@ -5,6 +5,7 @@
     ./apps.nix
     ./dev.nix
     ./gaming.nix
+    ./emulators.nix
     ./kde.nix
     ./nvidia.nix
     ./amd.nix
