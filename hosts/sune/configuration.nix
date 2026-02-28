@@ -7,4 +7,12 @@
   ];
 
   networking.hostName = "sune";
+
+  myConfig.modules = {
+    apps.enable = true;
+    dev.enable = true;
+    gaming.enable = true;
+    kde.enable = true;
+    nvidia.enable = false;
+  };
 }
