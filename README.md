@@ -1,13 +1,15 @@
 # NixOS Configurations
 
-My personal NixOS configurations using Flakes and Home Manager for system-wide and user-specific settings.
+My personal NixOS configurations using Flakes for system-wide and user-specific settings.
+
+Home Manager may be implemented at some point in the future, but is not active currently.
 
 ## 📁 Repository Structure
 
 - `flake.nix`: The entry point for all system configurations.
 - `hosts/`: Host-specific configurations (e.g., `mystra`, `sune`, `akadi`).
 - `modules/`: Shared modules for apps, development, gaming, hardware, and desktop environments.
-- `home-manager/`: User-specific configurations (managed via Home Manager).
+- `home-manager/`: User-specific configurations (to eventually be managed via Home Manager).
 - `nix-apply`: A convenience script to test, apply, and commit changes.
 
 ## 🚀 Usage
