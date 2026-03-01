@@ -19,6 +19,9 @@
       jetbrains.dataspell
       jetbrains.datagrip
       uv
+      nil
+      vscode.fhs
+      claude-code
       nixfmt
       nixbit
       nix-health
