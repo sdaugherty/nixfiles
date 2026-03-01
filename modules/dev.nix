@@ -9,6 +9,8 @@
   options.myConfig.modules.dev.enable = lib.mkEnableOption "Development tools";
 
   config = lib.mkIf config.myConfig.modules.dev.enable {
+    nixpkgs.config.android_sdk.accept_license = true; # required for android-studio
+
     environment.systemPackages = with pkgs; [
       go
       jetbrains.webstorm
@@ -18,6 +20,7 @@
       jetbrains.goland
       jetbrains.dataspell
       jetbrains.datagrip
+      android-studio
       uv
       nil
       vscode.fhs
