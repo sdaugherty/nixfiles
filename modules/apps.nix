@@ -31,6 +31,7 @@
       kdePackages.neochat
       kaidan
       irssi
+      ncdu
     ];
 
     xdg.mime.defaultApplications = {
