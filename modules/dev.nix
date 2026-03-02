@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 
@@ -9,6 +10,7 @@
   options.myConfig.modules.dev.enable = lib.mkEnableOption "Development tools";
 
   config = lib.mkIf config.myConfig.modules.dev.enable {
+    nixpkgs.overlays = [ inputs.claude-desktop.overlays.default ];
     nixpkgs.config.android_sdk.accept_license = true; # required for android-studio
 
     environment.systemPackages = with pkgs; [
@@ -25,6 +27,7 @@
       nil
       vscode.fhs
       claude-code
+      claude-desktop
       nixfmt
       nixbit
       nix-health
