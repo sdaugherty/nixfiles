@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 
@@ -32,6 +33,7 @@
       kaidan
       irssi
       ncdu
+      inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
     ];
 
     xdg.mime.defaultApplications = {
