@@ -138,6 +138,7 @@ hardware.bluetooth = {
     ntfs3g
     mesa-demos
     ack
+    lm_sensors
   ];
 
   # Enable the OpenSSH daemon.
