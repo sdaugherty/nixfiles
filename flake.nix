@@ -9,6 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     claude-desktop.url = "github:aaddrick/claude-desktop-debian";
+    hytale-launcher.url = "github:JPyke3/hytale-launcher-nix";
   };
 
   outputs = { self, nixpkgs, nixpkgs-master, home-manager, ... }@inputs: {
