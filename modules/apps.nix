@@ -35,6 +35,8 @@
       ncdu
       gramps
       pan
+      lyx
+      yubioath-flutter
       inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
       inputs.affinity-nix.packages.${pkgs.system}.v3
     ];
