@@ -38,6 +38,7 @@
       nerd-fonts.jetbrains-mono
       nerd-fonts.fira-mono
       nerd-fonts.fira-code
+      upsun
       gemini-cli
       (python3.withPackages (
         python-pkgs: with python-pkgs; [
