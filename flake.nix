@@ -13,6 +13,7 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    affinity-nix.url = "github:mrshmllow/affinity-nix";
     claude-desktop.url = "github:aaddrick/claude-desktop-debian";
     hytale-launcher.url = "github:JPyke3/hytale-launcher-nix";
   };

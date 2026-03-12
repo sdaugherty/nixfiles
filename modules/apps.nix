@@ -34,6 +34,7 @@
       irssi
       ncdu
       inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
+      inputs.affinity-nix.packages.${pkgs.system}.v3
     ];
 
     xdg.mime.defaultApplications = {
