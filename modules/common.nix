@@ -145,6 +145,7 @@ hardware.bluetooth = {
     mesa-demos
     ack
     lm_sensors
+    nh
   ];
 
   # Enable the OpenSSH daemon.
