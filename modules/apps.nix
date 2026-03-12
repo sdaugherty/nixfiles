@@ -33,6 +33,8 @@
       kaidan
       irssi
       ncdu
+      gramps
+      pan
       inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
       inputs.affinity-nix.packages.${pkgs.system}.v3
     ];
