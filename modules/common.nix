@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
+    inputs.nix-index-database.nixosModules.nix-index
     ./apps.nix
     ./dev.nix
     ./gaming.nix
@@ -10,6 +11,11 @@
     ./nvidia.nix
     ./amd.nix
   ];
+
+  # nix-index configuration
+  programs.nix-index.enable = true;
+  programs.nix-index.package = inputs.nix-index.packages.${pkgs.system}.default;
+  programs.nix-index-database.comma.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

@@ -8,6 +8,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index.url = "github:nix-community/nix-index";
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     claude-desktop.url = "github:aaddrick/claude-desktop-debian";
     hytale-launcher.url = "github:JPyke3/hytale-launcher-nix";
   };
