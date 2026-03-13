@@ -39,6 +39,7 @@
       yubioath-flutter
       alpaca
       kdePackages.alpaka
+      ollama
       thunderbird
       inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
       inputs.affinity-nix.packages.${pkgs.system}.v3
