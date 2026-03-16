@@ -34,6 +34,10 @@
       kdePackages.kio-fuse
       kdePackages.kio-gdrive
       kdePackages.kio-extras
+      kdePackages.kdesdk-kio
+      kdePackages.kio-zeroconf
+      kdePackages.dolphin-plugins
+      kdePackages.filelight
       kaidan
       irssi
       ncdu
