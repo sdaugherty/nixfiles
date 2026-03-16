@@ -30,6 +30,10 @@
       kdePackages.kcharselect
       kdePackages.konversation
       kdePackages.neochat
+      kdePackages.kio
+      kdePackages.kio-fuse
+      kdePackages.kio-gdrive
+      kdePackages.kio-extras
       kaidan
       irssi
       ncdu
