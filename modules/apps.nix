@@ -38,6 +38,8 @@
       kdePackages.kio-zeroconf
       kdePackages.dolphin-plugins
       kdePackages.filelight
+      kdePackages.kaccounts-providers
+      kdePackages.kaccounts-integration
       kaidan
       irssi
       ncdu
