@@ -6,9 +6,9 @@
 }:
 
 {
-  options.myConfig.modules.nvidia.enable = lib.mkEnableOption "NVIDIA drivers and configuration";
+  options.myConfig.modules.nvidia_desktop.enable = lib.mkEnableOption "NVIDIA drivers and configuration";
 
-  config = lib.mkIf config.myConfig.modules.nvidia.enable {
+  config = lib.mkIf config.myConfig.modules.nvidia_desktop.enable {
     # nvidia fun...
     hardware.graphics = {
       enable = true;

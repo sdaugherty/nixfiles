@@ -7,14 +7,13 @@
 }:
 
 {
-  options.myConfig.modules.dev.enable = lib.mkEnableOption "Development tools";
+  options.myConfig.modules.dev_desktop.enable = lib.mkEnableOption "Desktop development tools";
 
-  config = lib.mkIf config.myConfig.modules.dev.enable {
+  config = lib.mkIf config.myConfig.modules.dev_desktop.enable {
     nixpkgs.overlays = [ inputs.claude-desktop.overlays.default ];
     nixpkgs.config.android_sdk.accept_license = true; # required for android-studio
 
     environment.systemPackages = with pkgs; [
-      go
       jetbrains.webstorm
       jetbrains.rust-rover
       jetbrains.pycharm
@@ -23,29 +22,12 @@
       jetbrains.dataspell
       jetbrains.datagrip
       android-studio
-      uv
-      nil
       vscode.fhs
-      claude-code
       claude-desktop
-      nixfmt
-      nixbit
-      nix-health
-      direnv
-      nix-direnv
-      starship
       nerd-fonts.hack
       nerd-fonts.jetbrains-mono
       nerd-fonts.fira-mono
       nerd-fonts.fira-code
-      upsun
-      gemini-cli
-      (python3.withPackages (
-        python-pkgs: with python-pkgs; [
-          pandas
-          requests
-        ]
-      ))
     ];
   };
 }

@@ -6,19 +6,19 @@
     ../../modules/common.nix
   ];
 
-  networking.hostName = "sune";
+  networking.hostName = "istishia";
 
   myConfig.modules = {
     common_cli.enable = true;
-    common_desktop.enable = true;
+    common_desktop.enable = false;
     apps_cli.enable = true;
-    apps_desktop.enable = true;
+    apps_desktop.enable = false;
     dev_cli.enable = true;
-    dev_desktop.enable = true;
-    gaming_desktop.enable = true;
+    dev_desktop.enable = false;
+    gaming_desktop.enable = false;
     emulators_desktop.enable = false;
-    kde_desktop.enable = true;
+    kde_desktop.enable = false;
     nvidia_desktop.enable = false;
-    amd_desktop.enable = true;
+    amd_desktop.enable = false;
   };
 }

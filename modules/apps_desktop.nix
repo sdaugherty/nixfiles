@@ -7,9 +7,9 @@
 }:
 
 {
-  options.myConfig.modules.apps.enable = lib.mkEnableOption "General applications";
+  options.myConfig.modules.apps_desktop.enable = lib.mkEnableOption "Desktop applications";
 
-  config = lib.mkIf config.myConfig.modules.apps.enable {
+  config = lib.mkIf config.myConfig.modules.apps_desktop.enable {
     programs.firefox.enable = true;
     programs.steam.enable = true;
     programs._1password-gui = {
@@ -41,15 +41,12 @@
       kdePackages.kaccounts-providers
       kdePackages.kaccounts-integration
       kaidan
-      irssi
-      ncdu
       gramps
       pan
       lyx
       yubioath-flutter
       alpaca
       kdePackages.alpaka
-      ollama
       thunderbird
       super-productivity
       inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre

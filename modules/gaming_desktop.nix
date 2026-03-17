@@ -7,9 +7,9 @@
 }:
 
 {
-  options.myConfig.modules.gaming.enable = lib.mkEnableOption "Gaming tools";
+  options.myConfig.modules.gaming_desktop.enable = lib.mkEnableOption "Gaming tools";
 
-  config = lib.mkIf config.myConfig.modules.gaming.enable {
+  config = lib.mkIf config.myConfig.modules.gaming_desktop.enable {
     environment.systemPackages = with pkgs; [
       heroic
       lutris

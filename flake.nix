@@ -26,12 +26,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/mystra/configuration.nix
-          #home-manager.nixosModules.home-manager
-          #{
-          #  home-manager.useGlobalPkgs = true;
-          #  home-manager.useUserPackages = true;
-          #  home-manager.users.stephanie = import ./home-manager/home.nix;
-          #}
         ];
       };
       sune = nixpkgs.lib.nixosSystem {
@@ -39,12 +33,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/sune/configuration.nix
-          #home-manager.nixosModules.home-manager
-          #{
-          #  home-manager.useGlobalPkgs = true;
-          #  home-manager.useUserPackages = true;
-          #  home-manager.users.stephanie = import ./home-manager/home.nix;
-          #}
         ];
       };
       akadi = nixpkgs.lib.nixosSystem {
@@ -52,12 +40,27 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/akadi/configuration.nix
-          #home-manager.nixosModules.home-manager
-          #{
-          #  home-manager.useGlobalPkgs = true;
-          #  home-manager.useUserPackages = true;
-          #  home-manager.users.stephanie = import ./home-manager/home.nix;
-          #}
+        ];
+      };
+      waukeen = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/waukeen/configuration.nix
+        ];
+      };
+      lathander = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/lathander/configuration.nix
+        ];
+      };
+      istishia = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/istishia/configuration.nix
         ];
       };
     };
