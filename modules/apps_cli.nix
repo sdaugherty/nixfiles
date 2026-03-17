@@ -13,6 +13,14 @@
       irssi
       ncdu
       ollama
+      bitwarden-cli
+      _1password-cli
+      fastfetch
+      joe
+      clamav
+      ntfs3g
+      ack
+      lm_sensors
     ];
   };
 }

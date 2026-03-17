@@ -83,18 +83,10 @@
 
       # List packages installed in system profile.
       environment.systemPackages = with pkgs; [
-        bitwarden-cli
-        _1password-cli
         git
-        fastfetch
         vim
         wget
-        joe
         curl
-        clamav
-        ntfs3g
-        ack
-        lm_sensors
         nh
       ];
 
