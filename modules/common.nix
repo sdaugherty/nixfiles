@@ -19,7 +19,6 @@
     common_desktop.enable = lib.mkEnableOption "Common desktop services and applications";
   };
 
-  users.root.openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPmTkcqfVI29TNfSaLBs0sY37bF9GrXAuPN00C6zti/K stephanie@mystra'' ];
 
 
   config = lib.mkMerge [
@@ -69,6 +68,8 @@
           "wheel"
         ];
       };
+
+      users.users.root.openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPmTkcqfVI29TNfSaLBs0sY37bF9GrXAuPN00C6zti/K stephanie@mystra'' ];
 
       # nix-command and enable - flakes would go here too
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
