@@ -49,6 +49,7 @@
       kdePackages.alpaka
       thunderbird
       super-productivity
+      adoptopenjdk-icedtea-web
       inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
       inputs.affinity-nix.packages.${pkgs.system}.v3
     ];
