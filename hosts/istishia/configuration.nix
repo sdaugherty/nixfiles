@@ -8,6 +8,10 @@
 
   networking.hostName = "istishia";
 
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.grub.enable = true;
+  boot.loader.efi.canTouchEfiVariables = false;
+
   myConfig.modules = {
     common_cli.enable = true;
     common_desktop.enable = false;

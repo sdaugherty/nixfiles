@@ -27,8 +27,8 @@
       programs.nix-index-database.comma.enable = true;
 
       # Bootloader.
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
+      boot.loader.systemd-boot.enable = lib.mkDefault true;
+      boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
 
       # Use latest 6.18 kernel.
       boot.kernelPackages = pkgs.linuxPackages_6_18;
