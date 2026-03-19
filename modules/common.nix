@@ -12,6 +12,7 @@
     ./kde_desktop.nix
     ./nvidia_desktop.nix
     ./amd_desktop.nix
+    ./grocy_cli.nix
   ];
 
   options.myConfig.modules = {
