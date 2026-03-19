@@ -21,6 +21,7 @@
       ntfs3g
       ack
       lm_sensors
+      rdap
     ];
   };
 }
