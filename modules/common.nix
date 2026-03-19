@@ -10,6 +10,7 @@
     ./gaming_desktop.nix
     ./emulators_desktop.nix
     ./kde_desktop.nix
+    ./niri_desktop.nix
     ./nvidia_desktop.nix
     ./amd_desktop.nix
     ./grocy_cli.nix
