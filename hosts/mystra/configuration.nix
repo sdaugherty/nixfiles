@@ -18,6 +18,7 @@
     gaming_desktop.enable = true;
     emulators_desktop.enable = true;
     kde_desktop.enable = true;
+    cinnamon_desktop.enable = true;
     niri_desktop.enable = false;
     nvidia_desktop.enable = false;
     amd_desktop.enable = true;
