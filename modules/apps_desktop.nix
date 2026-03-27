@@ -53,6 +53,8 @@
       alpaca
       kdePackages.alpaka
       thunderbird
+      protontricks
+      protonup-ng
       super-productivity
       adoptopenjdk-icedtea-web
       inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
