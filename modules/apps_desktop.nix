@@ -33,6 +33,14 @@
       polkitPolicyOwners = [ "stephanie" ];
     };
 
+
+    fonts.packages = with pkgs; [
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
+      corefonts
+    ];
+
+
     environment.systemPackages = with pkgs; [
       libreoffice-qt-fresh
       obsidian
