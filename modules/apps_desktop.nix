@@ -40,6 +40,7 @@
       corefonts
     ];
 
+    fonts.enableDefaultPackages = true;
 
     environment.systemPackages = with pkgs; [
       libreoffice-qt-fresh
