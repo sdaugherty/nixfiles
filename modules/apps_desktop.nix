@@ -47,6 +47,8 @@
       lyx
       yad
       xwininfo
+      xdotool
+      kdotool
       yubioath-flutter
       alpaca
       kdePackages.alpaka
