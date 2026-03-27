@@ -12,6 +12,7 @@
   config = lib.mkIf config.myConfig.modules.apps_desktop.enable {
     programs.firefox.enable = true;
     programs.steam.enable = true;
+    programs.steam.protontricks.enable = true;
     programs._1password-gui = {
       enable = true;
       polkitPolicyOwners = [ "stephanie" ];
