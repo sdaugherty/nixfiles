@@ -22,6 +22,9 @@
       ack
       lm_sensors
       rdap
+      unzip
+      
+
     ];
   };
 }

@@ -45,6 +45,8 @@
       gramps
       pan
       lyx
+      yad
+      xwininfo
       yubioath-flutter
       alpaca
       kdePackages.alpaka
