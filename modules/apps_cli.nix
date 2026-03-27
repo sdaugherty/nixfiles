@@ -23,6 +23,7 @@
       lm_sensors
       rdap
       unzip
+      tree
       
 
     ];
