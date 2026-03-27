@@ -21,6 +21,7 @@
         qogir-icon-theme
         steamtinkerlaunch
         corefonts
+        winetricks
       ];
       extraCompatPackages = with pkgs; [
         steamtinkerlaunch
@@ -98,6 +99,9 @@
       alpaca
       kdePackages.alpaka
       thunderbird
+      wine
+      winetricks
+      q4wine
       #protontricks
       protonup-ng
       protonplus
