@@ -11,8 +11,15 @@
 
   config = lib.mkIf config.myConfig.modules.apps_desktop.enable {
     programs.firefox.enable = true;
-    programs.steam.enable = true;
-    programs.steam.protontricks.enable = true;
+    programs.steam = {
+      enable = true;
+      protontricks.enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+      
+    };
+
     programs._1password-gui = {
       enable = true;
       polkitPolicyOwners = [ "stephanie" ];
@@ -53,7 +60,7 @@
       alpaca
       kdePackages.alpaka
       thunderbird
-      protontricks
+      #protontricks
       protonup-ng
       protonplus
       super-productivity
