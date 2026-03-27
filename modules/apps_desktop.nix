@@ -55,6 +55,7 @@
       thunderbird
       protontricks
       protonup-ng
+      protonplus
       super-productivity
       adoptopenjdk-icedtea-web
       inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
