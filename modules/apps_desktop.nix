@@ -20,6 +20,7 @@
       extraPackages = with pkgs; [
         qogir-icon-theme
         steamtinkerlaunch
+        corefonts
       ];
       extraCompatPackages = with pkgs; [
         steamtinkerlaunch
@@ -60,6 +61,7 @@
       pan
       lyx
       yad
+      corefonts
       xwininfo
       xdotool
       kdotool
