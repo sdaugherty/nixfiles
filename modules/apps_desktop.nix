@@ -107,6 +107,7 @@
       protonplus
       super-productivity
       adoptopenjdk-icedtea-web
+      bubblewrap
       inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
       inputs.affinity-nix.packages.${pkgs.system}.v3
     ];
