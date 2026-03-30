@@ -99,7 +99,7 @@
       alpaca
       kdePackages.alpaka
       thunderbird
-      wine
+      wineWowPackages.stable
       winetricks
       q4wine
       #protontricks
