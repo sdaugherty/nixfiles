@@ -110,6 +110,15 @@
       bubblewrap
       inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
       inputs.affinity-nix.packages.${pkgs.system}.v3
+      (pkgs.wrapOBS {
+        plugins = with pkgs.obs-studio-plugins; [
+          wlrobs
+          obs-backgroundremoval
+         obs-pipewire-audio-capture
+        ];
+      })
+
+
     ];
 
     xdg.mime.defaultApplications = {
