@@ -35,8 +35,8 @@
       boot.loader.systemd-boot.enable = lib.mkDefault true;
       boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
 
-      # Use latest 6.18 kernel.
-      boot.kernelPackages = pkgs.linuxPackages_6_18;
+      # Use the latest stable kernel.
+      boot.kernelPackages = pkgs.linuxPackages_latest;
 
       # Enable networking
       networking.networkmanager.enable = true;
