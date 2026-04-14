@@ -22,5 +22,6 @@
     niri_desktop.enable = false;
     nvidia_desktop.enable = false;
     amd_desktop.enable = true;
+    watercooling_desktop.enable = true;
   };
 }

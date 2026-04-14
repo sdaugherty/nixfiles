@@ -15,6 +15,7 @@
     ./nvidia_desktop.nix
     ./amd_desktop.nix
     ./grocy_cli.nix
+    ./watercooling_desktop.nix
   ];
 
   options.myConfig.modules = {
