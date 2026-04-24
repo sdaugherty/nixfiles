@@ -70,6 +70,7 @@
         extraGroups = [
           "networkmanager"
           "wheel"
+          "openrazer"
         ];
       };
 
