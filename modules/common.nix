@@ -82,6 +82,13 @@
       # Allow unfree packages
       nixpkgs.config.allowUnfree = true;
 
+      # Pin openldap to a working version
+      nixpkgs.overlays = [
+        (final: prev: {
+          openldap = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.openldap;
+        })
+      ];
+
       # debugging symbols
       environment.enableDebugInfo = true;
 
