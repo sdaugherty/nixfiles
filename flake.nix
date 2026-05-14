@@ -23,44 +23,44 @@
     packages.x86_64-linux.calibre = nixpkgs-master.legacyPackages.x86_64-linux.calibre;
     nixosConfigurations = {
       mystra = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          { nixpkgs.hostPlatform = "x86_64-linux"; }
           ./hosts/mystra/configuration.nix
         ];
       };
       sune = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          { nixpkgs.hostPlatform = "x86_64-linux"; }
           ./hosts/sune/configuration.nix
         ];
       };
       akadi = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          { nixpkgs.hostPlatform = "x86_64-linux"; }
           ./hosts/akadi/configuration.nix
         ];
       };
       waukeen = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          { nixpkgs.hostPlatform = "aarch64-linux"; }
           ./hosts/waukeen/configuration.nix
         ];
       };
       lathander = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          { nixpkgs.hostPlatform = "x86_64-linux"; }
           ./hosts/lathander/configuration.nix
         ];
       };
       istishia = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          { nixpkgs.hostPlatform = "x86_64-linux"; }
           ./hosts/istishia/configuration.nix
         ];
       };

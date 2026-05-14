@@ -103,7 +103,7 @@
       alpaca
       kdePackages.alpaka
       thunderbird
-      wineWowPackages.stable
+      wineWow64Packages.stable
       winetricks
       q4wine
       #protontricks
@@ -112,7 +112,7 @@
       super-productivity
       adoptopenjdk-icedtea-web
       bubblewrap
-      inputs.nixpkgs-master.legacyPackages.${pkgs.system}.calibre
+      inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system}.calibre
       affinity-v3
       openrazer-daemon
       polychromatic

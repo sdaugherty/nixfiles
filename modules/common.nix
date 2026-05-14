@@ -29,7 +29,7 @@
     (lib.mkIf config.myConfig.modules.common_cli.enable {
       # nix-index configuration
       programs.nix-index.enable = true;
-      programs.nix-index.package = inputs.nix-index.packages.${pkgs.system}.default;
+      programs.nix-index.package = inputs.nix-index.packages.${pkgs.stdenv.hostPlatform.system}.default;
       programs.nix-index-database.comma.enable = true;
 
       # Bootloader.

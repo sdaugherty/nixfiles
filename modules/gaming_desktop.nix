@@ -14,7 +14,7 @@
       heroic
       lutris
       protonup-qt
-      inputs.hytale-launcher.packages.${pkgs.system}.default
+      inputs.hytale-launcher.packages.${pkgs.stdenv.hostPlatform.system}.default
       (prismlauncher.override {
         # Add binary required by some mod
         additionalPrograms = [ ffmpeg ];
