@@ -23,5 +23,6 @@
     nvidia_desktop.enable = false;
     amd_desktop.enable = true;
     watercooling_desktop.enable = true;
+    input_remapper_desktop.enable = true;
   };
 }
