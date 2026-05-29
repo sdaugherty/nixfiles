@@ -38,7 +38,7 @@
       boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
 
       # Kernel pinned independently via nixpkgs-kernel flake input — update that input to change the kernel.
-      boot.kernelPackages = inputs.nixpkgs-kernel.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackages_7_0;
+      boot.kernelPackages = inputs.nixpkgs-kernel.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackages_latest;
 
       # Enable networking
       networking.networkmanager.enable = true;
