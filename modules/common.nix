@@ -37,8 +37,8 @@
       boot.loader.systemd-boot.enable = lib.mkDefault true;
       boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
 
-      # Use the latest stable kernel.
-      boot.kernelPackages = pkgs.linuxPackages_latest;
+      # Kernel pinned independently via nixpkgs-kernel flake input — update that input to change the kernel.
+      boot.kernelPackages = inputs.nixpkgs-kernel.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackages_7_0;
 
       # Enable networking
       networking.networkmanager.enable = true;
