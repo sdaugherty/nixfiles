@@ -106,6 +106,7 @@
       # security override for package vulerabilities
       nixpkgs.config.permittedInsecurePackages = [
         "olm-3.2.16"
+        "electron-39.8.10"
       ];
 
       # List packages installed in system profile.
