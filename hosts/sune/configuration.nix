@@ -15,7 +15,10 @@
     apps_desktop.enable = true;
     dev_cli.enable = true;
     dev_desktop.enable = true;
-    gaming_desktop.enable = true;
+    gaming_desktop = {
+      enable = true;
+      hytale.enable = false;
+    };
     emulators_desktop.enable = false;
     kde_desktop.enable = true;
     nvidia_desktop.enable = false;
