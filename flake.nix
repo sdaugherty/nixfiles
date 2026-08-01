@@ -18,6 +18,10 @@
     affinity-nix.url = "github:mrshmllow/affinity-nix";
     claude-desktop.url = "github:aaddrick/claude-desktop-debian";
     hytale-launcher.url = "github:JPyke3/hytale-launcher-nix";
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-master, home-manager, ... }@inputs: {

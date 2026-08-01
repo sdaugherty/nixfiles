@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/common.nix
+    ./minecraft.nix
   ];
 
   networking.hostName = "istishia";
