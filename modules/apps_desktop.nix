@@ -10,7 +10,7 @@
   options.myConfig.modules.apps_desktop.enable = lib.mkEnableOption "Desktop applications";
 
   config = lib.mkIf config.myConfig.modules.apps_desktop.enable {
-    nixpkgs.overlays = [ inputs.affinity-nix.overlays.default ];
+    # nixpkgs.overlays = [ inputs.affinity-nix.overlays.default ];
 
     programs.firefox.enable = true;
     programs.steam = {
@@ -113,7 +113,7 @@
       adoptopenjdk-icedtea-web
       bubblewrap
       inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system}.calibre
-      affinity-v3
+      # affinity-v3
       openrazer-daemon
       polychromatic
       (pkgs.wrapOBS {
