@@ -10,6 +10,10 @@ let
       url = "https://cdn.modrinth.com/data/fxxUqruK/versions/zZX86mbc/voxy-0.2.18-beta.jar";
       hash = "sha256-3Z4Q0hEIefB8HOm98ZRfNHCzLoOXfwlABe6MZC6BKNU=";
     };
+    "mods/voicechat-fabric-2.6.21+26.2.jar" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/9eGKb6K1/versions/3SOh5iiX/voicechat-fabric-2.6.21%2B26.2.jar";
+      hash = "sha256-7V+hoRf6Jr+8hGPCf4io3/xT2id3gfJm7RESKB9/Zfc=";
+    };
   };
 in
 {
@@ -47,6 +51,14 @@ in
       symlinks = {
         "mods" = "${modpack}/mods";
       };
+
+      files = {
+        "config/voicechat/voicechat-server.properties".value = {
+          port = 24454;
+        };
+      };
     };
   };
+
+  networking.firewall.allowedUDPPorts = [ 24454 ];
 }
