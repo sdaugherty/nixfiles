@@ -1,9 +1,15 @@
 { inputs, pkgs, lib, ... }:
 let
-  modpack = pkgs.fetchModrinthModpack {
+  modpack = (pkgs.fetchModrinthModpack {
     src = ../../files/mothcraft.mrpack;
     packHash = "sha256-HugmmSRhqvf2QSjo8dLk1mXk4Ww9aEnofDIoUpqwtVw=";
     side = "server";
+  }).addFiles {
+    # Voxy is marked server-unsupported in the mrpack but is required by VoxyServer
+    "mods/voxy-0.2.18-beta.jar" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/fxxUqruK/versions/zZX86mbc/voxy-0.2.18-beta.jar";
+      hash = "sha256-3Z4Q0hEIefB8HOm98ZRfNHCzLoOXfwlABe6MZC6BKNU=";
+    };
   };
 in
 {
