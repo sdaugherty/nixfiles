@@ -2,7 +2,7 @@
 let
   modpack = pkgs.fetchModrinthModpack {
     src = ../../files/mothcraft.mrpack;
-    packHash = lib.fakeHash;
+    packHash = "sha256-HugmmSRhqvf2QSjo8dLk1mXk4Ww9aEnofDIoUpqwtVw=";
     side = "server";
   };
 in
