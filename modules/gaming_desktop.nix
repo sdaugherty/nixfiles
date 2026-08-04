@@ -17,6 +17,8 @@
   };
 
   config = lib.mkIf config.myConfig.modules.gaming_desktop.enable {
+    programs.nix-ld.enable = true;
+
     environment.systemPackages = with pkgs;
       [
         heroic
