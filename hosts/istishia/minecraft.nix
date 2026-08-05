@@ -14,6 +14,10 @@ let
       url = "https://cdn.modrinth.com/data/9eGKb6K1/versions/3SOh5iiX/voicechat-fabric-2.6.21%2B26.2.jar";
       hash = "sha256-7V+hoRf6Jr+8hGPCf4io3/xT2id3gfJm7RESKB9/Zfc=";
     };
+    "mods/villagercycle-1.5.0+26.2.jar" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/lI4LXqQa/versions/IHbkLguL/villagercycle-1.5.0%2B26.2.jar";
+      hash = "sha256-Pw362vtZRYKpkWt9jizgFMYYdoUQSsXhB01Ghym3bfg=";
+    };
   };
 in
 {
