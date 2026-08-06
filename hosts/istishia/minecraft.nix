@@ -18,6 +18,10 @@ let
       url = "https://cdn.modrinth.com/data/lI4LXqQa/versions/IHbkLguL/villagercycle-1.5.0%2B26.2.jar";
       hash = "sha256-Pw362vtZRYKpkWt9jizgFMYYdoUQSsXhB01Ghym3bfg=";
     };
+    "mods/ferritecore-9.0.0-fabric.jar" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/uXXizFIs/versions/d5ddUdiB/ferritecore-9.0.0-fabric.jar";
+      hash = "sha256-ITlmxy7ZZ6zHOSvrKKhm+6MB/1a5l2wueAHC233mvyI=";
+    };
   };
 in
 {
