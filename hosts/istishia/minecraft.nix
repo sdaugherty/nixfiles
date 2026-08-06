@@ -10,6 +10,7 @@ let
       wrapProgram $out/bin/java \
         --prefix LD_LIBRARY_PATH : "${pkgs.stdenv.cc.cc.lib}/lib"
     '';
+    meta.mainProgram = "java";
   };
 
   modpack = (pkgs.fetchModrinthModpack {
