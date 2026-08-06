@@ -1,5 +1,17 @@
 { inputs, pkgs, lib, ... }:
 let
+  # Voxy's RocksDB JNI native library requires libstdc++.so.6 at runtime.
+  # Wrap the JRE so LD_LIBRARY_PATH includes it (NixOS doesn't expose it otherwise).
+  zulu25-with-stdcpp = pkgs.symlinkJoin {
+    name = "zulu25-with-stdcpp";
+    paths = [ pkgs.zulu25 ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/java \
+        --prefix LD_LIBRARY_PATH : "${pkgs.stdenv.cc.cc.lib}/lib"
+    '';
+  };
+
   modpack = (pkgs.fetchModrinthModpack {
     src = ../../files/mothcraft.mrpack;
     packHash = "sha256-HugmmSRhqvf2QSjo8dLk1mXk4Ww9aEnofDIoUpqwtVw=";
@@ -46,7 +58,7 @@ in
       enable = true;
       package = pkgs.fabricServers.fabric-26_2.override {
         loaderVersion = "0.19.3";
-        jre_headless = pkgs.zulu25;
+        jre_headless = zulu25-with-stdcpp;
       };
       whitelist = {
         MothTheGoblin = "114354f7-e737-490d-8393-2a4d989cecc7";
