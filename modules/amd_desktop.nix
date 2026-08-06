@@ -19,6 +19,7 @@
         libva
         libva-vdpau-driver
         libvdpau-va-gl
+        vulkan-loader
       ];
       extraPackages32 = with pkgs.pkgsi686Linux; [
         libva

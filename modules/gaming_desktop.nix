@@ -17,7 +17,13 @@
   };
 
   config = lib.mkIf config.myConfig.modules.gaming_desktop.enable {
-    programs.nix-ld.enable = true;
+    programs.nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib  # libstdc++.so.6 for LWJGL native libs
+        openal
+      ];
+    };
 
     environment.systemPackages = with pkgs;
       [
