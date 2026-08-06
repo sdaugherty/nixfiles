@@ -77,6 +77,7 @@ in
         white-list = true;
         enforce-whitelist = true;
         level-seed = "-6446031685201032150";
+        allow-flight = true;
       };
 
       symlinks = {
