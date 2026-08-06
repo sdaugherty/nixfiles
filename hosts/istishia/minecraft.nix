@@ -58,6 +58,8 @@ in
         ancientstephanie = "c29e3b52-dd9c-4767-9519-657bcea0909d";
       };
 
+      jvmOpts = "-Xms2G -Xmx6G";
+
       serverProperties = {
         white-list = true;
         enforce-whitelist = true;
