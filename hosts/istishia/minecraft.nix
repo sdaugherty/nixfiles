@@ -46,7 +46,7 @@ in
       enable = true;
       package = pkgs.fabricServers.fabric-26_2.override {
         loaderVersion = "0.19.3";
-        jre_headless = pkgs.jdk25;
+        jre_headless = pkgs.zulu25;
       };
       whitelist = {
         MothTheGoblin = "114354f7-e737-490d-8393-2a4d989cecc7";
