@@ -43,6 +43,10 @@ let
       url = "https://cdn.modrinth.com/data/l6YH9Als/versions/iYFOl6lQ/spark-1.10.173-fabric.jar";
       hash = "sha256-B27SKI2yoFym6AYWFeGjHRkSzxsQZl5PCaF5TV25lDM=";
     };
+    "mods/imfast-FABRIC-26.2-1.0.3.jar" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/PaUMOeP0/versions/nD5sET2x/imfast-FABRIC-26.2-1.0.3.jar";
+      hash = "sha512-ZkYG60Hb8TOF7IJUXDCnsRi9JjOTMlwppqbu9uCjkFVcGU4MFd9kwY1/R3NExCPlGOZ7SB1ckXH9XH+zZ5U0Gw==";
+    };
   };
 in
 {
