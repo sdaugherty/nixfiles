@@ -12,7 +12,7 @@
     environment.systemPackages = with pkgs; [
       zsnes
       blastem
-      retroarch-full
+      # retroarch-full
       dosbox-x
     ];
   };
