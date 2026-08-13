@@ -47,6 +47,30 @@ let
       url = "https://cdn.modrinth.com/data/PaUMOeP0/versions/nD5sET2x/imfast-FABRIC-26.2-1.0.3.jar";
       hash = "sha512-ZkYG60Hb8TOF7IJUXDCnsRi9JjOTMlwppqbu9uCjkFVcGU4MFd9kwY1/R3NExCPlGOZ7SB1ckXH9XH+zZ5U0Gw==";
     };
+    "mods/bettercoppergolem-FABRIC-2.3.0-26.2.jar" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/FD3rofvj/versions/hObU3vIn/bettercoppergolem-FABRIC-2.3.0-26.2.jar";
+      hash = "sha512-m4QNhowE0qASpFScM5XCklbamgDNzMeIAc2SmmvtCNeFVCYB/EMwBp7F7I/4K4HT6awusy5weYyUrjc74rz4mQ==";
+    };
+    "mods/simple-crop-harvester-1.0.1.jar" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/YU24fvmk/versions/XL1z7zbU/simple-crop-harvester-1.0.1.jar";
+      hash = "sha512-31LV+UQxbx2IPdvqshsDq/GC2S/LJo8wGp3hLLYiq76Xl6nW+lC0oGlWA7nxBp37BqlrlkgDV6wpJ7Gao2SnOA==";
+    };
+    "mods/simple_villager_follow-26.1.2-Fabric-1.0.0.jar" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/TLfqKtxl/versions/68fCp7ce/simple_villager_follow-26.1.2-Fabric-1.0.0.jar";
+      hash = "sha512-k5aAzUHYn0TXtFRMcxwF5FpHP/YXRYjhTxyfJljXYOBgLXxHG+Mff3D9Vr3NhC5WQR/yPG6hBF74T+T6HegD8g==";
+    };
+  };
+
+  # Datapacks (not Fabric mods) symlinked wholesale into the world's datapacks folder.
+  datapacks = pkgs.linkFarm "mothcraft-datapacks" {
+    "superiorstonecutter-v1.3.1.zip" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/yWBAOWPN/versions/2tEzj9sa/superiorstonecutter-v1.3.1.zip";
+      hash = "sha512-uGgAviVxsi943NHhdJLPOX0mu3vreNZHVGuA2BlkRF5yjc2kWKkCXThQEtbwYZkyl+bf+dtq5iAS4rYjUh2FKQ==";
+    };
+    "superiorsmelting-v1.2.3.zip" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/2DtbGsFA/versions/OYc2z2vR/superiorsmelting-v1.2.3.zip";
+      hash = "sha512-G7m47Isp2p89XEGf0dWsolbq6tB5QkS9AekihHX92gorlcPWgPmbDeJtUxkqawiDmezFrrVv/HeTAMi0RrNMjg==";
+    };
   };
 in
 {
@@ -86,6 +110,7 @@ in
 
       symlinks = {
         "mods" = "${modpack}/mods";
+        "world/datapacks" = datapacks;
       };
 
       files = {
