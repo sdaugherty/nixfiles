@@ -72,6 +72,17 @@ let
       hash = "sha512-G7m47Isp2p89XEGf0dWsolbq6tB5QkS9AekihHX92gorlcPWgPmbDeJtUxkqawiDmezFrrVv/HeTAMi0RrNMjg==";
     };
   };
+
+  # Shared between both servers so whitelist/ops stay in sync.
+  players = {
+    MothTheGoblin = "114354f7-e737-490d-8393-2a4d989cecc7";
+    ancientstephanie = "c29e3b52-dd9c-4767-9519-657bcea0909d";
+  };
+
+  fabricPackage = pkgs.fabricServers.fabric-26_2.override {
+    loaderVersion = "0.19.3";
+    jre_headless = zulu25-with-stdcpp;
+  };
 in
 {
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
@@ -85,19 +96,9 @@ in
 
     servers.mothcraft = {
       enable = true;
-      package = pkgs.fabricServers.fabric-26_2.override {
-        loaderVersion = "0.19.3";
-        jre_headless = zulu25-with-stdcpp;
-      };
-      whitelist = {
-        MothTheGoblin = "114354f7-e737-490d-8393-2a4d989cecc7";
-        ancientstephanie = "c29e3b52-dd9c-4767-9519-657bcea0909d";
-      };
-
-      operators = {
-        MothTheGoblin = "114354f7-e737-490d-8393-2a4d989cecc7";
-        ancientstephanie = "c29e3b52-dd9c-4767-9519-657bcea0909d";
-      };
+      package = fabricPackage;
+      whitelist = players;
+      operators = players;
 
       jvmOpts = "-Xms2G -Xmx6G";
 
@@ -119,7 +120,36 @@ in
         };
       };
     };
+
+    servers.mothcraft-creative = {
+      enable = true;
+      package = fabricPackage;
+      whitelist = players;
+      operators = players;
+
+      jvmOpts = "-Xms2G -Xmx6G";
+
+      serverProperties = {
+        white-list = true;
+        enforce-whitelist = true;
+        server-port = 25566;
+        gamemode = 1;
+        level-type = "minecraft:flat";
+        allow-flight = true;
+      };
+
+      symlinks = {
+        "mods" = "${modpack}/mods";
+        "world/datapacks" = datapacks;
+      };
+
+      files = {
+        "config/voicechat/voicechat-server.properties".value = {
+          port = 24455;
+        };
+      };
+    };
   };
 
-  networking.firewall.allowedUDPPorts = [ 24454 ];
+  networking.firewall.allowedUDPPorts = [ 24454 24455 ];
 }
