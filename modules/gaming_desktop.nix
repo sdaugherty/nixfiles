@@ -25,6 +25,15 @@
       ];
     };
 
+    # ntsync: NT synchronization primitive emulation for Wine/Proton.
+    # Built as a module (CONFIG_NTSYNC=m) already, just needs loading.
+    boot.kernelModules = [ "ntsync" ];
+
+    # /dev/ntsync defaults to root-only (0600); relax so unprivileged Wine/Proton can open it.
+    services.udev.extraRules = ''
+      KERNEL=="ntsync", MODE="0666"
+    '';
+
     environment.systemPackages = with pkgs;
       [
         heroic
