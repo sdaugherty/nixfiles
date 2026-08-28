@@ -44,6 +44,9 @@
 
     hardware.openrazer.enable = true;
 
+    # dialout lets CHIRP talk to radio programming cables (/dev/ttyUSB*) without sudo
+    users.users.stephanie.extraGroups = [ "dialout" ];
+
     programs._1password-gui = {
       enable = true;
       polkitPolicyOwners = [ "stephanie" ];
@@ -102,6 +105,7 @@
       yubioath-flutter
       alpaca
       kdePackages.alpaka
+      chirp
       thunderbird
       wineWow64Packages.stable
       winetricks
