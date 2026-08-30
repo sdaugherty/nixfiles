@@ -13,11 +13,13 @@ let
     meta.mainProgram = "java";
   };
 
-  modpack = (pkgs.fetchModrinthModpack {
+  modpackSrc = pkgs.fetchModrinthModpack {
     src = ../../files/mothcraft.mrpack;
     packHash = "sha256-HugmmSRhqvf2QSjo8dLk1mXk4Ww9aEnofDIoUpqwtVw=";
     side = "server";
-  }).addFiles {
+  };
+
+  extraMods = {
     # Voxy is marked server-unsupported in the mrpack but is required by VoxyServer
     "mods/voxy-0.2.18-beta.jar" = pkgs.fetchurl {
       url = "https://cdn.modrinth.com/data/fxxUqruK/versions/zZX86mbc/voxy-0.2.18-beta.jar";
@@ -60,6 +62,16 @@ let
       hash = "sha512-k5aAzUHYn0TXtFRMcxwF5FpHP/YXRYjhTxyfJljXYOBgLXxHG+Mff3D9Vr3NhC5WQR/yPG6hBF74T+T6HegD8g==";
     };
   };
+
+  modpack = modpackSrc.addFiles extraMods;
+
+  # Creative server gets WorldEdit on top of the shared modpack; survival does not.
+  creativeModpack = modpackSrc.addFiles (extraMods // {
+    "mods/worldedit-mod-7.4.5.jar" = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/1u6JkXh5/versions/6YnCYPwc/worldedit-mod-7.4.5.jar";
+      hash = "sha512-YR/3zADXjGOihO8mtvvIBq8pXEaTdeXnHk1+mTqm6j+pCUXkZRHJm2FXoB7Vw4aKKmQZtHo4EUzB5nsywg98ow==";
+    };
+  });
 
   # Datapacks (not Fabric mods) symlinked wholesale into the world's datapacks folder.
   datapacks = pkgs.linkFarm "mothcraft-datapacks" {
@@ -139,7 +151,7 @@ in
       };
 
       symlinks = {
-        "mods" = "${modpack}/mods";
+        "mods" = "${creativeModpack}/mods";
         "world/datapacks" = datapacks;
       };
 
