@@ -38,7 +38,25 @@
       boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
 
       # Kernel pinned independently via nixpkgs-kernel flake input — update that input to change the kernel.
-      boot.kernelPackages = inputs.nixpkgs-kernel.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackages_latest;
+      boot.kernelPackages =
+        (inputs.nixpkgs-kernel.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackages_latest).extend (
+          final: prev: {
+            # openrazer 3.12.3's kernel driver calls strncpy(), which Linux 7.2
+            # removed outright (not just the header — the symbol is gone).
+            # Upstream fixed this in 3.12.4 by switching to strscpy(); nixpkgs
+            # still pins 3.12.3, so pull the fixed release directly.
+            # Drop this override once nixpkgs bumps past 3.12.3.
+            openrazer = prev.openrazer.overrideAttrs (old: {
+              version = "3.12.4-${prev.kernel.version}";
+              src = pkgs.fetchFromGitHub {
+                owner = "openrazer";
+                repo = "openrazer";
+                tag = "v3.12.4";
+                hash = "sha256-WgDYs0ehnzWlX/wvfur0UhFLbZv7jZ6FMybqDaFDuLg=";
+              };
+            });
+          }
+        );
 
       # Enable networking
       networking.networkmanager.enable = true;
