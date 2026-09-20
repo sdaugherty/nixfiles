@@ -15,6 +15,7 @@
       ollama
       bitwarden-cli
       _1password-cli
+      google-cloud-sdk
       fastfetch
       joe
       clamav
