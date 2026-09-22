@@ -134,6 +134,7 @@
         wget
         curl
         nh
+        traceroute
       ];
 
       # Enable the OpenSSH daemon.
