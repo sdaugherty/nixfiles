@@ -75,6 +75,8 @@
       obsidian
       discord
       typora
+      vlc
+      kdePackages.kdenlive
       captive-browser
       deezer-enhanced
       zoom-us
