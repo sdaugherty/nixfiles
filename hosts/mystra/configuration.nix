@@ -8,6 +8,10 @@
 
   networking.hostName = "mystra";
 
+  environment.systemPackages = [
+    (pkgs.callPackage ../../pkgs/serenade-converter.nix { })
+  ];
+
   myConfig.modules = {
     common_cli.enable = true;
     common_desktop.enable = true;
