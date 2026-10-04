@@ -466,6 +466,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_8": {
+      "locked": {
+        "lastModified": 1785692966,
+        "narHash": "sha256-vUfIeBEfpbAfZ5zjgIkYk7eHBeVfCYVjLbWnMkseYnk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "643809054d65fdd466a63e3155b8c498cb483c04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "on-linux": {
       "flake": false,
       "locked": {
@@ -479,6 +495,24 @@
       "original": {
         "owner": "seapear",
         "repo": "AffinityOnLinux",
+        "type": "github"
+      }
+    },
+    "opendeck-nix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_8"
+      },
+      "locked": {
+        "lastModified": 1785764453,
+        "narHash": "sha256-q2Sjdts8zY+WvpjtnUbnakrgDHzi0DmlDjQMfyu3hWg=",
+        "owner": "Kitt3120",
+        "repo": "opendeck-nix",
+        "rev": "32160fa0ae01bf227a691c54a162809b14b8641b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kitt3120",
+        "repo": "opendeck-nix",
         "type": "github"
       }
     },
@@ -513,7 +547,8 @@
           "nixpkgs"
         ],
         "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-stable": "nixpkgs-stable"
+        "nixpkgs-stable": "nixpkgs-stable",
+        "opendeck-nix": "opendeck-nix"
       }
     },
     "systems": {

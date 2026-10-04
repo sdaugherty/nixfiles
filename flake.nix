@@ -22,6 +22,9 @@
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Do not set inputs.nixpkgs.follows here - upstream warns it causes hash
+    # mismatches in the package's fixed-output derivations.
+    opendeck-nix.url = "github:Kitt3120/opendeck-nix";
   };
 
   outputs = { self, nixpkgs, nixpkgs-master, home-manager, ... }@inputs: {

@@ -17,6 +17,7 @@
     ./grocy_cli.nix
     ./watercooling_desktop.nix
     ./input_remapper_desktop.nix
+    ./opendeck_desktop.nix
   ];
 
   options.myConfig.modules = {
