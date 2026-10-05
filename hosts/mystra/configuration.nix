@@ -12,11 +12,6 @@
     (pkgs.callPackage ../../pkgs/serenade-converter.nix { })
   ];
 
-  programs.streamdeck-ui = {
-    enable = true;
-    autoStart = true;
-  };
-
   myConfig.modules = {
     common_cli.enable = true;
     common_desktop.enable = true;
@@ -33,6 +28,6 @@
     amd_desktop.enable = true;
     watercooling_desktop.enable = true;
     input_remapper_desktop.enable = true;
-    # opendeck_desktop.enable = true;
+    opendeck_desktop.enable = true;
   };
 }
