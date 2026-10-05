@@ -16,6 +16,12 @@
   # so services.udev.packages picks up the Stream Deck udev rules it ships.
   programs.streamcontroller.enable = true;
 
+  # streamcontroller's shipped udev rules (70-streamcontroller.rules) don't cover
+  # the Stream Deck Mini (0fd9:00b3), so grant it uaccess here too.
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="00b3", TAG+="uaccess"
+  '';
+
   myConfig.modules = {
     common_cli.enable = true;
     common_desktop.enable = true;
