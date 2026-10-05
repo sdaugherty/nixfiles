@@ -10,8 +10,11 @@
 
   environment.systemPackages = [
     (pkgs.callPackage ../../pkgs/serenade-converter.nix { })
-    pkgs.streamcontroller
   ];
+
+  # Enabled via the dedicated module (rather than just environment.systemPackages)
+  # so services.udev.packages picks up the Stream Deck udev rules it ships.
+  programs.streamcontroller.enable = true;
 
   myConfig.modules = {
     common_cli.enable = true;
