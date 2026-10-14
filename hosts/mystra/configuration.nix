@@ -10,6 +10,7 @@
 
   environment.systemPackages = [
     (pkgs.callPackage ../../pkgs/serenade-converter.nix { })
+    (pkgs.callPackage ../../pkgs/sir-launchalot.nix { })
   ];
 
   myConfig.modules = {
