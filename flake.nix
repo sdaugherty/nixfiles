@@ -28,7 +28,11 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-master, home-manager, ... }@inputs: {
-    packages.x86_64-linux.calibre = nixpkgs-master.legacyPackages.x86_64-linux.calibre;
+    # speechSupport pulls in piper-tts -> pyopenjtalk-plus, whose test suite
+    # is currently broken in nixpkgs-master. Disable it until that's fixed.
+    packages.x86_64-linux.calibre = nixpkgs-master.legacyPackages.x86_64-linux.calibre.override {
+      speechSupport = false;
+    };
     nixosConfigurations = {
       mystra = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };

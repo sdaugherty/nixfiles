@@ -119,7 +119,7 @@
       adoptopenjdk-icedtea-web
       orca-slicer
       bubblewrap
-      inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system}.calibre
+      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.calibre
       # affinity-v3
       openrazer-daemon
       polychromatic
