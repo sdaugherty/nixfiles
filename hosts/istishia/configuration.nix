@@ -20,7 +20,7 @@
     apps_desktop.enable = false;
     dev_cli.enable = true;
     dev_desktop.enable = false;
-    grocy_cli.enable = true;
+    grocy_cli.enable = false;
     gaming_desktop.enable = false;
     emulators_desktop.enable = false;
     kde_desktop.enable = false;
