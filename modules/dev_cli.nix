@@ -23,7 +23,10 @@
       starship
       upsun
       gemini-cli
-      inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system}.antigravity-cli
+      (import inputs.nixpkgs-master {
+        system = pkgs.stdenv.hostPlatform.system;
+        config.allowUnfree = true;
+      }).antigravity-cli
       (python3.withPackages (
         python-pkgs: with python-pkgs; [
           pandas
