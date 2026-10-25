@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-kernel.follows = "nixpkgs";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/b86751bc4085f48661017fa226dee99fab6c651b";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -27,10 +28,10 @@
     opendeck-nix.url = "github:Kitt3120/opendeck-nix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-master, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-master, nixpkgs-unstable, home-manager, ... }@inputs: {
     # speechSupport pulls in piper-tts -> pyopenjtalk-plus, whose test suite
     # is currently broken in nixpkgs-master. Disable it until that's fixed.
-    packages.x86_64-linux.calibre = nixpkgs-master.legacyPackages.x86_64-linux.calibre.override {
+    packages.x86_64-linux.calibre = nixpkgs-unstable.legacyPackages.x86_64-linux.calibre.override {
       speechSupport = false;
     };
     nixosConfigurations = {
