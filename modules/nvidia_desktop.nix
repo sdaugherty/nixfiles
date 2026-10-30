@@ -13,6 +13,16 @@
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
+      extraPackages = with pkgs; [
+        libva
+        nvidia-vaapi-driver
+        vulkan-loader
+      ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [
+        libva
+        nvidia-vaapi-driver
+        vulkan-loader
+      ];
     };
 
     services.xserver.videoDrivers = [ "nvidia" ];

@@ -17,19 +17,17 @@
       enable32Bit = true;
       extraPackages = with pkgs; [
         libva
-        libva-vdpau-driver
-        libvdpau-va-gl
         vulkan-loader
       ];
       extraPackages32 = with pkgs.pkgsi686Linux; [
         libva
-        libva-vdpau-driver
-        libvdpau-va-gl
+        vulkan-loader
       ];
     };
 
     environment.systemPackages = with pkgs; [
       libva-utils
+      vulkan-tools
     ];
   };
 }

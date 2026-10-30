@@ -181,6 +181,11 @@
         pulse.enable = true;
       };
 
+      xdg.portal = {
+        enable = lib.mkDefault true;
+        extraPortals = lib.mkDefault [ pkgs.xdg-desktop-portal-gtk ];
+      };
+
       environment.systemPackages = with pkgs; [
         bitwarden-desktop
         clamtk
