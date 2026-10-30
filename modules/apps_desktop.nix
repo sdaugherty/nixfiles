@@ -76,7 +76,6 @@
           useFHSEnv = true;
         };
         discordUnwrapped = discordBase.passthru.unwrappedDiscord.overrideAttrs (oldAttrs: {
-          nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ pkgs.python3 ];
           postInstall = (oldAttrs.postInstall or "") + ''
             # Replace bundled libvulkan.so.1 with system vulkan-loader so Discord's
             # VA-API/Vulkan video encoder and Chromium GPU process use the host driver stack
@@ -86,74 +85,10 @@
             sed -i '/--suffix VK_ADD_DRIVER_FILES/a \    --suffix LIBVA_DRIVERS_PATH : "${pkgs.addDriverRunpath.driverLink}/lib/dri" \\' \
               $out/opt/Discord/Discord
 
-            # Patch app.asar and core.asar:
-            # 1. Disable Chromium's LimitConcurrentDecoderInstances (caps VaapiVideoDecoder at 16 instances -> DecoderStatus::206)
-            # 2. Enable AcceleratedVideoEncoder, VaapiIgnoreDriverChecks, VaapiOnNvidiaGPUs in Electron's enable-features
-            # 3. Align hardcoded libopenh264-2.5.1-linux64.7.so filename with the 2.7.0 version downloaded by Discord's web client
-            python3 - "$out/opt/Discord/resources/app.asar" "$out/opt/Discord/modules/discord_desktop_core/core.asar" <<'PY'
-            import hashlib, json, struct, sys
-
-            def patch_asar(path, entry_name, replacements):
-                with open(path, "rb") as f:
-                    data = f.read()
-                _, _, _, json_len = struct.unpack("<4I", data[:16])
-                header = json.loads(data[16:16 + json_len].decode("utf-8"))
-                pad = (4 - (json_len % 4)) % 4
-                payload_start = 16 + json_len + pad
-                payload = data[payload_start:]
-
-                b_info = header["files"][entry_name]
-                b_off = int(b_info["offset"])
-                b_size = b_info["size"]
-                old_bundle = payload[b_off:b_off + b_size]
-                new_bundle = old_bundle
-                for old_bytes, new_bytes in replacements:
-                    assert old_bytes in new_bundle, f"{old_bytes!r} not found in {path}:{entry_name}"
-                    new_bundle = new_bundle.replace(old_bytes, new_bytes)
-
-                delta = len(new_bundle) - len(old_bundle)
-                b_info["size"] = len(new_bundle)
-                new_hash = hashlib.sha256(new_bundle).hexdigest()
-                b_info["integrity"]["hash"] = new_hash
-                b_info["integrity"]["blocks"] = [new_hash]
-
-                def shift_offsets(node):
-                    if isinstance(node, dict):
-                        if "offset" in node and int(node["offset"]) > b_off:
-                            node["offset"] = str(int(node["offset"]) + delta)
-                        for v in node.values():
-                            shift_offsets(v)
-
-                shift_offsets(header["files"])
-                new_json = json.dumps(header, separators=(",", ":")).encode("utf-8")
-                new_jlen = len(new_json)
-                new_pad = (4 - (new_jlen % 4)) % 4
-                aligned = new_jlen + new_pad
-                new_hdr = struct.pack("<4I", 4, aligned + 8, aligned + 4, new_jlen) + new_json + (b"\x00" * new_pad)
-                with open(path, "wb") as f:
-                    f.write(new_hdr + payload[:b_off] + new_bundle + payload[b_off + b_size:])
-
-            patch_asar(sys.argv[1], "bundle.js", [
-                (
-                    b'"linux"===process.platform&&disabledFeatures.push("WaylandWpColorManagerV1")',
-                    b'"linux"===process.platform&&disabledFeatures.push("WaylandWpColorManagerV1","LimitConcurrentDecoderInstances")',
-                ),
-                (
-                    b'appendSwitch("enable-features","DocumentPolicyIncludeJSCallStacksInCrashReports")',
-                    b'appendSwitch("enable-features","DocumentPolicyIncludeJSCallStacksInCrashReports,AcceleratedVideoEncoder,VaapiIgnoreDriverChecks,VaapiOnNvidiaGPUs")',
-                ),
-                (
-                    b"libopenh264-2.5.1-linux64.7.so",
-                    b"libopenh264-2.7.0-linux64.8.so",
-                ),
-            ])
-            patch_asar(sys.argv[2], "mainScreenPreload.js", [
-                (
-                    b"libopenh264-2.5.1-linux64.7.so",
-                    b"libopenh264-2.7.0-linux64.8.so",
-                ),
-            ])
-            PY
+            # Disable ImageQualitySink self-decode VMAF/PSNR loop on outgoing streams,
+            # which spins up extra hardware decoders and crashes the renderer thread on Linux
+            substituteInPlace $out/opt/Discord/modules/discord_voice/index.js \
+              --replace-fail "features.declareSupported('image_quality_measurement');" "// features.declareSupported('image_quality_measurement');"
           '';
           passthru = oldAttrs.passthru // {
             targetPkgs =
