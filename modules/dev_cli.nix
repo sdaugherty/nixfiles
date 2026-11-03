@@ -11,6 +11,7 @@
 
   config = lib.mkIf config.myConfig.modules.dev_cli.enable {
     environment.systemPackages = with pkgs; [
+      android-tools
       go
       uv
       nil
