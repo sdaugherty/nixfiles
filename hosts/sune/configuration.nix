@@ -24,5 +24,6 @@
     nvidia_desktop.enable = false;
     amd_desktop.enable = true;
     input_remapper_desktop.enable = true;
+    pin_auth_desktop.enable = true;
   };
 }

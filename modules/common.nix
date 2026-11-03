@@ -18,6 +18,7 @@
     ./watercooling_desktop.nix
     ./input_remapper_desktop.nix
     ./opendeck_desktop.nix
+    ./pin_auth_desktop.nix
   ];
 
   options.myConfig.modules = {
