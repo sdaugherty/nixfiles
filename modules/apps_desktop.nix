@@ -141,7 +141,7 @@
       xdotool
       kdotool
       yubioath-flutter
-      inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.alpaca
+      alpaca
       kdePackages.alpaka
       chirp
       thunderbird

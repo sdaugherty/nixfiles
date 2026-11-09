@@ -22,7 +22,10 @@
       jetbrains.dataspell
       jetbrains.datagrip
       android-studio
-      vscode.fhs
+      (import inputs.nixpkgs-unstable {
+        system = pkgs.stdenv.hostPlatform.system;
+        config.allowUnfree = true;
+      }).vscode.fhs
       claude-desktop-fhs
       nerd-fonts.hack
       nerd-fonts.jetbrains-mono
