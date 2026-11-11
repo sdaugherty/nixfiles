@@ -13,6 +13,7 @@
     # nixpkgs.overlays = [ inputs.affinity-nix.overlays.default ];
 
     programs.firefox.enable = true;
+    programs.kdeconnect.enable = true;
     programs.steam = {
       enable = true;
       protontricks.enable = true;
