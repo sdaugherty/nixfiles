@@ -108,6 +108,7 @@
       in
       with pkgs; [
       libreoffice-qt-fresh
+      kdePackages.calligra # Words, Sheets, Stage, Karbon
       obsidian
       discordCustom
       typora
