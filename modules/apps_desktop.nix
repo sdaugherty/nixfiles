@@ -107,7 +107,7 @@
         };
       in
       with pkgs; [
-      libreoffice-qt-fresh
+      inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.libreoffice-qt
       kdePackages.calligra # Words, Sheets, Stage, Karbon
       obsidian
       discordCustom
@@ -128,6 +128,7 @@
       kdePackages.kio-extras
       kdePackages.kdesdk-kio
       kdePackages.kio-zeroconf
+      (kdePackages.callPackage "${inputs.nixpkgs-unstable}/pkgs/kde/misc/kio-s3" { })
       kdePackages.dolphin-plugins
       kdePackages.filelight
       kdePackages.kaccounts-providers
