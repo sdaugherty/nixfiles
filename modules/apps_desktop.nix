@@ -108,6 +108,8 @@
         };
       in
       with pkgs; [
+      google-chrome
+      krita
       inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.libreoffice-qt
       kdePackages.calligra # Words, Sheets, Stage, Karbon
       obsidian
