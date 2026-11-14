@@ -176,7 +176,7 @@
     ];
 
     xdg.mime.defaultApplications = {
-      "text/html" = "org.mozilla.firefox";
+      "text/html" = "firefox.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
