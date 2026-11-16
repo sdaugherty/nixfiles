@@ -127,6 +127,7 @@
       nixpkgs.config.permittedInsecurePackages = [
         "olm-3.2.16"
         "electron-39.8.10"
+        "deezer-enhanced-1.5.1"
       ];
 
       # List packages installed in system profile.

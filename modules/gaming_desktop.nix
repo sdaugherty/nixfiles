@@ -39,6 +39,7 @@
         heroic
         lutris
         protonup-qt
+        modrinth-app
         (prismlauncher.override {
           # Add binary required by some mod
           additionalPrograms = [ ffmpeg ];
